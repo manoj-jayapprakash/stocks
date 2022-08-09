@@ -1,0 +1,4 @@
+- Enable user to create multiple watchlist.
+- Each watchlist will hold multiple stocks
+- Display a table with the stocks data for the selected watchlist
+- When a user clicks on the stock from the table, show them a detailed information
