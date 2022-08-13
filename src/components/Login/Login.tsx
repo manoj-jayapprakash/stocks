@@ -1,10 +1,13 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
+
 import { schema } from './loginValidation';
 import { TextBox } from '../Form';
+import { Button } from '../Form/Button';
 
-type Inputs = {
+type LoginFormFields = {
   email: string;
   password: string;
 };
@@ -14,20 +17,36 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>({
+  } = useForm<LoginFormFields>({
     resolver: yupResolver(schema),
   });
+  const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<LoginFormFields> = (data) => {
+    navigate('/');
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextBox
-        label="Email"
-        placeholder="martin@gmail.com"
-        {...register('email')}
-      />
-      <TextBox label="Password" {...register('password')} />
-    </form>
+    <main className="p-8 border-8 rounded-3xl">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <TextBox
+            type="text"
+            label="Email"
+            fieldName="email"
+            register={register}
+          />
+          <TextBox
+            type="password"
+            label="Password"
+            fieldName="password"
+            register={register}
+          />
+        </div>
+        <div className="mt-4 text-center">
+          <Button label="Login" type="submit" />
+        </div>
+      </form>
+    </main>
   );
 };
