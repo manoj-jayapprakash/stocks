@@ -3,6 +3,7 @@ import React from 'react';
 type ButtonProps = {
   type: 'submit' | 'button';
   label: string;
+  className?: string;
 };
 
 export const Button = (props: ButtonProps) => {

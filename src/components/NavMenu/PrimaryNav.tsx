@@ -20,9 +20,10 @@ export const PrimaryNav = (props: PrimaryNavProps) => {
           {item.linkName}
         </li>
       ))}
-      <li className="tab ml-auto bg-gray-200 rounded-lg text-black">
-        Add Watchlist
+      <li className="tab ml-auto mr-4 bg-gray-200 rounded-lg text-black">
+        Create Sublist
       </li>
+      <li className="tab bg-gray-200 rounded-lg text-black">Add Watchlist</li>
     </ul>
   );
 };
