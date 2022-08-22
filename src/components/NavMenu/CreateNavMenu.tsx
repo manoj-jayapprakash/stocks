@@ -28,7 +28,7 @@ export const CreateNavMenu = (props: TProps) => {
   };
 
   return (
-    <nav className="mb-4">
+    <>
       <Button
         type="button"
         label={label}
@@ -45,6 +45,6 @@ export const CreateNavMenu = (props: TProps) => {
       >
         <AddNewWatchListForm closeModal={closeModal} />
       </Modal>
-    </nav>
+    </>
   );
 };

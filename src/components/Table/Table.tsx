@@ -3,9 +3,13 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
+  SortingState,
   useReactTable,
 } from '@tanstack/react-table';
 import React from 'react';
+import { RootPage } from '../../pages/RootPage';
+import { data } from './data';
 
 type StockData = {
   id: number;
@@ -21,140 +25,9 @@ type StockData = {
   time: string;
 };
 
-export const StockTable = () => {
-  const data: StockData[] = [
-    {
-      id: 1,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '+6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 2,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '+6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 3,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '+6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 4,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '-3%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 5,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '-6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 6,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '+6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 7,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '-6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 8,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '-6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 9,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '+6%',
-      vol: '2M',
-      time: '09/09',
-    },
-    {
-      id: 10,
-      name: 'Apple',
-      symbol: 'AAPL',
-      last: '234',
-      open: '240',
-      high: '260',
-      low: '180',
-      chg: '6',
-      chgper: '-6%',
-      vol: '2M',
-      time: '09/09',
-    },
-  ];
+export default function StockTable() {
   const columnHelper = createColumnHelper<StockData>();
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const renderChangePercent = (value: string) => {
     const commonStyleClass = 'p-1 w-12 text-white text-center rounded-lg ';
     let markup = <p className={`bg-green-600 ${commonStyleClass}`}>{value}</p>;
@@ -209,55 +82,76 @@ export const StockTable = () => {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    debugTable: true,
   });
 
   return (
-    <div className="overflow-x-auto">
-      <table className="table table-compact w-full">
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          {table.getFooterGroups().map((footerGroup) => (
-            <tr key={footerGroup.id}>
-              {footerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.footer,
-                        header.getContext()
-                      )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </tfoot>
-      </table>
-    </div>
+    <RootPage>
+      <div className="overflow-x-auto">
+        <table className="table table-compact w-full">
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th key={header.id}>
+                    {header.isPlaceholder ? null : (
+                      <div
+                        {...{
+                          className: header.column.getCanSort()
+                            ? 'cursor-pointer select-none'
+                            : '',
+                          onClick: header.column.getToggleSortingHandler(),
+                        }}
+                      >
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                        {{
+                          asc: ' 🔼',
+                          desc: ' 🔽',
+                        }[header.column.getIsSorted() as string] ?? null}
+                      </div>
+                    )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            {table.getFooterGroups().map((footerGroup) => (
+              <tr key={footerGroup.id}>
+                {footerGroup.headers.map((header) => (
+                  <th key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.footer,
+                          header.getContext()
+                        )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </tfoot>
+        </table>
+      </div>
+    </RootPage>
   );
-};
+}

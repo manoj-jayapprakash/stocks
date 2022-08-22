@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CreateNavMenu } from './CreateNavMenu';
 
-type PrimaryNavProps = {
+type NavMenuProps = {
   items: { id: number; linkName: string }[];
 };
 
-export const PrimaryNav = (props: PrimaryNavProps) => {
+export const NavMenu = (props: NavMenuProps) => {
   const { items } = props;
-  const [activeTab, setActiveTab] = useState<number>(1);
+  const [activeTab, setActiveTab] = useState<number>();
+  const navigate = useNavigate();
+  const navBarClickHandler = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    id: number
+  ) => {
+    navigate(`/watchlist/${id}`);
+    setActiveTab(id);
+  };
+
   return (
     <ul className="tabs tabs-boxed bg-transparent">
       {items.map((item) => (
@@ -16,7 +26,7 @@ export const PrimaryNav = (props: PrimaryNavProps) => {
           className={`tab text-black ${
             activeTab === item.id ? 'rounded-lg bg-blue-300' : ''
           }`}
-          onClick={() => setActiveTab(item.id)}
+          onClick={(e) => navBarClickHandler(e, item.id)}
         >
           {item.linkName}
         </li>

@@ -7,6 +7,8 @@ import { schema } from './loginValidation';
 import { TextBox } from '../Form';
 import { Button } from '../Form/Button';
 
+import bgImage from '../../assets/login.svg';
+
 type LoginFormFields = {
   email: string;
   password: string;
@@ -27,30 +29,35 @@ export const Login = () => {
   };
 
   return (
-    <main className="p-8 border-8 rounded-3xl">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <>
+      <main className="p-8 border-8 rounded-3xl">
         <div>
-          <TextBox
-            type="text"
-            label="Email"
-            fieldName="email"
-            register={register}
-          />
-          <TextBox
-            type="password"
-            label="Password"
-            fieldName="password"
-            register={register}
-          />
+          <img src={bgImage} />
         </div>
-        <div className="mt-4 text-center">
-          <Button
-            label="Login"
-            type="submit"
-            buttonStyles="btn btn-sm btn-primary"
-          />
-        </div>
-      </form>
-    </main>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex flex-col gap-2">
+            <TextBox
+              type="text"
+              label="Email"
+              fieldName="email"
+              register={register}
+            />
+            <TextBox
+              type="password"
+              label="Password"
+              fieldName="password"
+              register={register}
+            />
+          </div>
+          <div className="mt-4 text-center">
+            <Button
+              label="Login"
+              type="submit"
+              buttonStyles="btn btn-sm btn-primary"
+            />
+          </div>
+        </form>
+      </main>
+    </>
   );
 };
