@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CreateNavMenu } from './CreateNavMenu';
 import { navLinks } from './data';
+import { secNavLinks } from './data';
 import { NavMenu } from './NavMenu';
 
 export const NavMenuList = () => {
@@ -11,7 +12,8 @@ export const NavMenuList = () => {
 
   return (
     <nav className="mb-4">
-      <NavMenu items={navLinks} />
+      <NavMenu items={navLinks} type="primary" />
+      <NavMenu items={secNavLinks} type="secondary" />
     </nav>
   );
 };

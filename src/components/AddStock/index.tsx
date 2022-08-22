@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
-import { Button } from '../Form';
 import Modal from 'react-modal';
-import { AddNewWatchListForm } from './AddNewWatchlistForm';
+import { Button } from '../Form';
+import { AddNewStockForm } from './AddNewStockForm';
 
-type TProps = {
-  label: string;
-};
-
-export const CreateNavMenu = (props: TProps) => {
-  const { label } = props;
+export const AddNewStock = () => {
   const [showCreateWatchListForm, setShowCreateWatchListForm] = useState(false);
 
   const customStyles = {
@@ -33,10 +28,10 @@ export const CreateNavMenu = (props: TProps) => {
   };
 
   return (
-    <>
+    <div className="text-center">
       <Button
         type="button"
-        label={label}
+        label="Add New Stock"
         buttonStyles="btn btn-sm"
         clickHandler={(e) =>
           setShowCreateWatchListForm(!showCreateWatchListForm)
@@ -48,8 +43,8 @@ export const CreateNavMenu = (props: TProps) => {
         style={customStyles}
         contentLabel="Create New WatchList"
       >
-        <AddNewWatchListForm closeModal={closeModal} />
+        <AddNewStockForm closeModal={closeModal} />
       </Modal>
-    </>
+    </div>
   );
 };

@@ -4,10 +4,11 @@ import { CreateNavMenu } from './CreateNavMenu';
 
 type NavMenuProps = {
   items: { id: number; linkName: string }[];
+  type: 'primary' | 'secondary';
 };
 
 export const NavMenu = (props: NavMenuProps) => {
-  const { items } = props;
+  const { items, type } = props;
   const [activeTab, setActiveTab] = useState<number>();
   const navigate = useNavigate();
   const navBarClickHandler = (
@@ -31,12 +32,14 @@ export const NavMenu = (props: NavMenuProps) => {
           {item.linkName}
         </li>
       ))}
-      <li className="tab ml-auto ">
-        <CreateNavMenu label="Create New Sub-WatchList" />
-      </li>
-      <li className="tab">
+      <li className="tab ml-auto">
         <CreateNavMenu label="Create New WatchList" />
       </li>
+      {type === 'primary' && (
+        <li className="tab ">
+          <CreateNavMenu label="Create New Sub-WatchList" />
+        </li>
+      )}
     </ul>
   );
 };

@@ -9,6 +9,7 @@ import {
 } from '@tanstack/react-table';
 import React from 'react';
 import { RootPage } from '../../pages/RootPage';
+import { AddNewStock } from '../AddStock';
 import { data } from './data';
 
 type StockData = {
@@ -152,6 +153,7 @@ export default function StockTable() {
           </tfoot>
         </table>
       </div>
+      <AddNewStock />
     </RootPage>
   );
 }
