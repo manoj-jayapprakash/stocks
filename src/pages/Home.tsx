@@ -8,7 +8,7 @@ export default function Home() {
     <RootPage>
       <div>
         <NavMenu />
-        <StockTable />
+        {/* <StockTable /> */}
       </div>
     </RootPage>
   );

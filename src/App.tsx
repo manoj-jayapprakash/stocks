@@ -2,6 +2,9 @@ import { Suspense, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Middleware } from './middleware/auth';
 import { AppRoutes } from './routes';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 function App() {
   return (

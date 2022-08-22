@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CreateNavMenu } from './CreateNavMenu';
 
 type PrimaryNavProps = {
   items: { id: number; linkName: string }[];
@@ -20,10 +21,12 @@ export const PrimaryNav = (props: PrimaryNavProps) => {
           {item.linkName}
         </li>
       ))}
-      <li className="tab ml-auto mr-4 bg-gray-200 rounded-lg text-black">
-        Create Sublist
+      <li className="tab ml-auto ">
+        <CreateNavMenu label="Create New Sub-WatchList" />
       </li>
-      <li className="tab bg-gray-200 rounded-lg text-black">Add Watchlist</li>
+      <li className="tab">
+        <CreateNavMenu label="Create New WatchList" />
+      </li>
     </ul>
   );
 };

@@ -44,7 +44,11 @@ export const Login = () => {
           />
         </div>
         <div className="mt-4 text-center">
-          <Button label="Login" type="submit" />
+          <Button
+            label="Login"
+            type="submit"
+            buttonStyles="btn btn-sm btn-primary"
+          />
         </div>
       </form>
     </main>
