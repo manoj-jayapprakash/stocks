@@ -16,11 +16,11 @@ type StockData = {
   id: number;
   name: string;
   symbol: string;
-  last: string;
-  open: string;
-  high: string;
-  low: string;
-  chg: string;
+  last: number;
+  open: number;
+  high: number;
+  low: number;
+  chg: number;
   chgper: string;
   vol: string;
   time: string;
