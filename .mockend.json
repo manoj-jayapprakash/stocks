@@ -1,8 +1,10 @@
 {
-  "Navmenu": {
+  "PrimaryNavMenu": {
     "navLinks": {
       "string": ["IT", "Pharma", "FMCG"]
-    },
+    }
+  },
+  "SecondaryNavMenu": {
     "secNavLinks": { "string": ["TCS", "Infosys", "Wipro", "CTS"] }
   }
 }
