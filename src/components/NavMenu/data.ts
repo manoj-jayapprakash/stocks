@@ -12,3 +12,6 @@ export const secNavLinks = [
   { id: 3, linkName: 'Small' },
   { id: 4, linkName: 'Hybrid' },
 ];
+
+// export const navLinks = [];
+// export const secNavLinks = []
