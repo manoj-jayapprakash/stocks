@@ -1,5 +1,5 @@
 {
-  "NavMenu": {
+  "Navmenu": {
     "navLinks": [
       { "id": 1, "linkName": "IT" },
       { "id": 2, "linkName": "Finance" },
