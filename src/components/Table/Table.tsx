@@ -10,6 +10,7 @@ import {
 import React from 'react';
 import { RootPage } from '../../pages/RootPage';
 import { AddNewStock } from '../AddStock';
+import { NavMenuList } from '../NavMenu';
 import { data } from './data';
 
 type StockData = {

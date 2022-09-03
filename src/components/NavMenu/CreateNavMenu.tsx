@@ -5,10 +5,11 @@ import { AddNewWatchListForm } from './AddNewWatchlistForm';
 
 type TProps = {
   label: string;
+  type: 'primary' | 'secondary';
 };
 
 export const CreateNavMenu = (props: TProps) => {
-  const { label } = props;
+  const { label, type } = props;
   const [showCreateWatchListForm, setShowCreateWatchListForm] = useState(false);
 
   const customStyles = {
@@ -48,7 +49,7 @@ export const CreateNavMenu = (props: TProps) => {
         style={customStyles}
         contentLabel="Create New WatchList"
       >
-        <AddNewWatchListForm closeModal={closeModal} />
+        <AddNewWatchListForm closeModal={closeModal} type={type} />
       </Modal>
     </>
   );

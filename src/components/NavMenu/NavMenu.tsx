@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { NavItems } from '.';
 import { CreateNavMenu } from './CreateNavMenu';
 
 type NavMenuProps = {
-  items: { id: number; linkName: string }[];
+  items: NavItems[];
   type: 'primary' | 'secondary';
 };
 
@@ -33,11 +34,11 @@ export const NavMenu = (props: NavMenuProps) => {
         </li>
       ))}
       <li className="tab ml-auto">
-        <CreateNavMenu label="Create New WatchList" />
+        <CreateNavMenu label="Create New WatchList" type="primary" />
       </li>
       {type === 'primary' && (
         <li className="tab ">
-          <CreateNavMenu label="Create New Sub-WatchList" />
+          <CreateNavMenu label="Create New Sub-WatchList" type="secondary" />
         </li>
       )}
     </ul>
